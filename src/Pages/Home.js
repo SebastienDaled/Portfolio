@@ -87,6 +87,30 @@ const Home = () => {
           y: 400, 
           autoAlpha: 1
         })
+
+
+
+        
+
+
+        
+
+        document.addEventListener('mousemove', mouseMoveFunc);
+        function mouseMoveFunc(e) {
+          const depth = 10;
+          const moveX = ((e.pageX)-(window.innerWidth/2))/depth;
+          const moveY = ((e.pageY)-(window.innerHeight/2))/depth;
+          gsap.to(".head__picture img", {
+            duration: 1,
+            x: moveX,
+            y: moveY,
+            ease: "slow",
+            stagger: 0.008,
+            overwrite: true
+          });
+        }
+        // greensock forum link:https://greensock.com/forums/topic/33156-objects-interact-with-mouse-move/
+
   }, []);
   
 
