@@ -33,15 +33,19 @@ h6 {
   font-style: normal;
 }
 h1 {
-  font-size: 6.5rem;
+  font-size: 5rem;
+  text-transform: uppercase;
   font-weight: 700;
   line-height: 95%;
+  margin-bottom: 1rem;
 }
 h2 {
   font-size: 2.5rem;
   font-weight: 600;
 }
-
+p {
+  line-height: 150%;
+}
 
 
 
@@ -50,23 +54,39 @@ h2 {
 .head {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-top: 15rem;
+  margin-top: 17rem;
 }
 .head__name{
   width: 60rem;
   border-left: 3px solid #C9C9C9;
   padding: 10rem 0 5rem 2rem;
+  align-self: center;
 }
 .head__name_function{
   font-family: 'forma-djr-display', sans-serif;
   font-size: 2.5rem;
   font-weight: 300;
+  font-style: italic;
+  color: #535353;
 }
 .head__picture{
   width: 40rem;
+  align-self: flex-start;
+  margin-top: -10rem;
 }
 
+.intro {
+  width: 100%;
+  max-width: 800px;
+  min-width: 350px;
+  margin-left: 2rem;
+  margin-bottom: 10rem;
+}
+
+/* -----------------------------------------------------------------projecten opmaak */
+.projecten{
+  margin-top: 30rem;
+}
 
 /* -----------------------------------------------------------------contact opmaak */
 .contact{

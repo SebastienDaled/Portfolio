@@ -1,7 +1,96 @@
 import React from 'react';
+import { useEffect } from 'react';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 import '../Styles/main.css';
 
 const Home = () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const headTimeline = gsap.timeline();
+  const introTimeline = gsap.timeline();
+  
+
+  useEffect(() => {
+    const headH1 = document.querySelector('.head__name h1');
+    const headFunction = document.querySelector('.head__name_function');
+    // const headPicture = document.querySelector('.head__picture img');
+
+    gsap.set(headH1, { y: 100, autoAlpha: 0 });
+    gsap.set(headFunction, { y: 100, autoAlpha: 0 });
+    // gsap.set(headPicture, { y: 100, autoAlpha: 0 });
+    
+    headTimeline
+      .to('.head__name h1', { 
+        duration: 1, 
+        y: 0, 
+        autoAlpha: 1 
+      })
+      .to('.head__name_function', { 
+        duration: 1, 
+        y: 0, 
+        autoAlpha: 1
+      }, '-=0.5')
+      // .to('.head__picture img', { 
+      //   duration: 1, 
+      //   y: 0, 
+      //   autoAlpha: 1
+      // }, '-=0.5')
+
+
+      const pictureTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: 'body',
+          start: '-=250',
+          end: '+=1000',
+          scrub: true,
+          // markers: true,
+        }
+      });
+      const introTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.intro p',
+          start: '-=1000',
+          end: '-=400',
+          scrub: true,
+          // markers: true,
+        }
+      });
+      const titleTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.head__name',
+          start: '-=250',
+          end: 'bottom',
+          scrub: true,
+          // markers: true,  
+        }
+      });
+
+  
+      pictureTimeline
+        .to('.head__picture img', { 
+          duration: 1, 
+          y: -200, 
+          autoAlpha: 0
+        })
+
+      introTimeline
+        .to('.intro p', { 
+          duration: 1, 
+          y: 270, 
+          autoAlpha: 1
+        })
+
+      titleTimeline
+        .to('.head__name', { 
+          duration: 1, 
+          y: 400, 
+          autoAlpha: 1
+        })
+  }, []);
+  
+
+
   return (
     <div>
       <main>
@@ -14,12 +103,14 @@ const Home = () => {
             <img src="/images/foto.jpg" alt="Foto van Sebastien" />
           </div>
         </section>
-        <section>
-          <p>Hi, ik ben Sebastien Daled-Rosseel. Ik ben een student op Artevelde hogeschool waar ik new media development studeer. Nu zit ik in m’n 3de en ook laatste jaar. Voor de hogeschool heb ik een opleiding gehad in multimedia in het middelbaar, dat was op Viso mariakerke hier heb ik vooral leren desigen.
+        <section className='intro'>
+          <p>Hallo, ik ben Sebastien Daled-Rosseel, een enthousiaste student aan Artevelde Hogeschool, waar ik de opleiding New Media Development volg. Momenteel zit ik in mijn derde en laatste jaar van deze boeiende studie. Mijn interesse in de wereld van multimedia en webontwikkeling begon eigenlijk al in het middelbaar, waar ik de opleiding Multimedia volgde aan Viso Mariakerke. Tijdens deze periode leerde ik voornamelijk de kunst van het ontwerpen, en dit vormde een solide basis voor mijn verdere academische reis. <br /><br />
 
-            Mijn passie is het coderen en het ontwerpen van site’s.  </p>
+Wat mij echt drijft en inspireert, is het coderen en ontwerpen van websites. Het is fascinerend om te zien hoe je met programmeertalen en creatieve ontwerpelementen iets kunt creëren dat toegankelijk is voor een wereldwijd publiek. Het proces van het bedenken van een concept, het schrijven van de code, en uiteindelijk het zien van een goed ontworpen website tot leven komen, geeft me enorm veel voldoening.<br /><br />
+
+Naast mijn passie voor webontwikkeling heb ik nog een andere liefde, en dat is voetbal. Als hobby breng ik graag mijn vrije tijd door op het voetbalveld. Het is niet alleen een geweldige manier om fit te blijven, maar het biedt ook de kans om samen te werken in een team, strategieën te bedenken en je vaardigheden op het veld te verbeteren. Voetbal brengt mensen samen en leert belangrijke levenslessen over teamwork en doorzettingsvermogen.</p>
         </section>
-        <section>
+        <section className='projecten'>
           <h2>Projecten</h2>
 
           <div>
