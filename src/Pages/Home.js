@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useEffect } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import '../Styles/main.css';
+import Project from '../Components/Projects/Project';
 
 const Home = () => {
   gsap.registerPlugin(ScrollTrigger);
 
   const headTimeline = gsap.timeline();
-  const introTimeline = gsap.timeline();
+  // const introTimeline = gsap.timeline();
   
 
   useEffect(() => {
@@ -111,9 +112,70 @@ const Home = () => {
         }
         // greensock forum link:https://greensock.com/forums/topic/33156-objects-interact-with-mouse-move/
 
-  }, []);
+  }, );
   
+  // fetch json bestand "Projects"
+  const [projects, setProjects] = useState([]);
 
+  useEffect(() => {
+    fetch('projects.json')
+      .then(response => response.json())
+      .then(data => setProjects(data.projecten));
+  }
+  , []);
+
+  const [xvalue, setXvalue] = useState(0);
+  const maxProject = projects.length;
+  const procentJump = 100 / maxProject;
+
+  const nextProject = () => {
+    if (xvalue < maxProject - 2) {
+      const projectDiv = document.querySelector('.projectDiv');
+      gsap.to(projectDiv, { 
+        duration: 1, 
+        x: "-="+procentJump+"%", 
+        
+      })
+    } else {
+      return;
+    }
+    setXvalue(xvalue + 1);
+  }
+
+  const previousProject = () => {
+    if (xvalue > 0) {
+      const projectDiv = document.querySelector('.projectDiv');
+      gsap.to(projectDiv, { 
+        duration: 1, 
+        x: "+="+procentJump+"%", 
+        
+      })
+    } else {
+      return;
+      
+    }
+    setXvalue(xvalue - 1);
+  }
+
+  useEffect(() => {
+    if (xvalue === 0) {
+      const previousBtn = document.querySelector('.previousBtn');
+      previousBtn.style.display = 'none';
+    }
+    if (xvalue === maxProject - 2) {
+      const nextBtn = document.querySelector('.nextBtn');
+      nextBtn.style.display = 'none';
+    }
+    if (xvalue === 1) {
+      const previousBtn = document.querySelector('.previousBtn');
+      previousBtn.style.display = 'block';
+    }
+    if (xvalue === maxProject - 3) {
+      const nextBtn = document.querySelector('.nextBtn');
+      nextBtn.style.display = 'block';
+    }
+  }
+  , [xvalue, maxProject]);
 
   return (
     <div>
@@ -137,12 +199,34 @@ Naast mijn passie voor webontwikkeling heb ik nog een andere liefde, en dat is v
         <section className='projecten'>
           <h2>Projecten</h2>
 
-          <div>
-            <div>
-              <div>
-                <h4>vak</h4>
-                <p>naam project</p>
+          <div className='projecten__container'>
+            <div className='projectDiv__Mask'>
+              
+              <div className='projectDiv'>
+              
+
+                {projects.map((_, i) => {
+                  return <Project key={i} index={i} />
+                })}
+
+                
               </div>
+              
+            </div>
+            <div className='projects__buttons'>
+              <button onClick={previousProject} className='btn_action previousBtn'><svg
+    id="Layer_4"
+    data-name="Layer 4"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 82.61 146.43"
+    style={{ fill: 'none', stroke: '#C9C9C9', strokeLinecap: 'round', strokeMiterlimit: 10, strokeWidth: '10px' }}
+  >
+    <polyline points="74.8 140.43 8.49 74.12 76.61 6"/>
+  </svg></button>
+              <button onClick={nextProject} className='btn_action nextBtn'>
+<svg id="Layer_4" data-name="Layer 4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82.61 146.43" style={{fill: 'none', stroke: '#C9C9C9', strokeLinecap: 'round', strokeMiterlimit: 10, strokeWidth: '10px' }}>
+  <polyline class="cls-1" points="7.81 6 74.12 72.31 6 140.43"/>
+</svg></button>
             </div>
           </div>
         </section>
@@ -194,18 +278,24 @@ Naast mijn passie voor webontwikkeling heb ik nog een andere liefde, en dat is v
             </div>
           </div>
           <div className='footer__socials'>
-            <div>
-              <img src="/images/footer/linkedin.png" alt="linkedin logo" />
-              <p>Sebastien Daled-Rosseel</p>
-            </div>
-            <div>
-              <img src="/images/footer/instagram.png" alt="Instagram logo" />
-              <p>sebastien_dr</p>
-            </div>
-            <div>
-              <img src="/images/footer/facebook.png" alt="Facebook logo" />
-              <p>Sébastien Daled-Rosseel</p>
-            </div>
+            <a href="https://www.linkedin.com/in/sebastien-daled-rosseel-5b3261223/" target="_blank" rel="noreferrer">
+              <div>
+                <img src="/images/footer/linkedin.png" alt="linkedin logo" />
+                <p>Sebastien Daled-Rosseel</p>
+              </div>
+            </a>
+            <a href="https://www.instagram.com/sebastien_dr/" target="_blank" rel="noreferrer">
+              <div>
+                <img src="/images/footer/instagram.png" alt="Instagram logo" />
+                <p>sebastien_dr</p>
+              </div>
+            </a>
+            <a href="https://www.facebook.com/sebastien.daledrosseel.7" target="_blank" rel="noreferrer">
+              <div>
+                <img src="/images/footer/facebook.png" alt="Facebook logo" />
+                <p>Sébastien Daled-Rosseel</p>
+              </div>
+            </a>
           </div>
         </div>
         <p className='copyrights'>© copyright 2023 Sebastien Daled-Rosseel</p>
