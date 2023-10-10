@@ -1,6 +1,7 @@
 {
   "projecten": [
     {
+      "id": 1,
       "titel": "Development quiz",
       "vak": "Mobile Development",
       "beschrijving": "Een quiz over development",
@@ -8,6 +9,7 @@
       "pictures": ["images/projecten/project1/1.jpg", "images/projecten/project1/2.jpg", "images/projecten/project1/3.jpg"]
     },
     {
+      "id": 2,
       "titel": "Development quiz",
       "vak": "Mobile Development",
       "beschrijving": "Een quiz over development",
@@ -15,6 +17,7 @@
       "pictures": ["images/projecten/project1/1.jpg", "images/projecten/project1/2.jpg", "images/projecten/project1/3.jpg"]
     },
     {
+      "id": 3,
       "titel": "Development quiz",
       "vak": "Mobile Development",
       "beschrijving": "Een quiz over development",
@@ -22,6 +25,7 @@
       "pictures": ["images/projecten/project1/1.jpg", "images/projecten/project1/2.jpg", "images/projecten/project1/3.jpg"]
     },
     {
+      "id": 4,
       "titel": "Development quiz",
       "vak": "Mobile Development",
       "beschrijving": "Een quiz over development",
@@ -29,6 +33,7 @@
       "pictures": ["images/projecten/project1/1.jpg", "images/projecten/project1/2.jpg", "images/projecten/project1/3.jpg"]
     },
     {
+      "id": 5,
       "titel": "Development quiz",
       "vak": "Mobile Development",
       "beschrijving": "Een quiz over development",
@@ -36,6 +41,7 @@
       "pictures": ["images/projecten/project1/1.jpg", "images/projecten/project1/2.jpg", "images/projecten/project1/3.jpg"]
     },
     {
+      "id": 6,
       "titel": "Development quiz",
       "vak": "Mobile Development",
       "beschrijving": "Een quiz over development",
