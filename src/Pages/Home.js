@@ -91,10 +91,6 @@ const Home = () => {
 
 
 
-        
-
-
-        
 
         document.addEventListener('mousemove', mouseMoveFunc);
         function mouseMoveFunc(e) {
@@ -112,8 +108,55 @@ const Home = () => {
         }
         // greensock forum link:https://greensock.com/forums/topic/33156-objects-interact-with-mouse-move/
 
+
+        // footer
+
+        
+
+
   }, );
-  
+  const footerTimeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.footer__socials',
+      start: '200 bottom',
+      end: 'bottom',
+      scrub: true,
+      // markers: true,
+    }
+  });
+
+  gsap.set('.footer__socials a', { x: 200, autoAlpha: 0 });
+  gsap.set('.footer__info div', { x: 100, autoAlpha: 0 });
+
+  footerTimeline
+    .to('.footer__info', { 
+      duration: 1, 
+      y: -100, 
+      autoAlpha: 1
+    })
+    .to('.footer__socials', { 
+      duration: 1, 
+      y: -100, 
+      autoAlpha: 1
+    }, '-=1')
+    .to('.copyrights', {
+      duration: 1,
+      y: -100,
+      autoAlpha: 1,
+    }, '-=1')
+    .to('.footer__info div', {
+      duration: 5,
+      x: 0,
+      autoAlpha: 1,
+      stagger: 0.2,
+    }, '-=1')
+    .to('.footer__socials a', {
+      duration: 5,
+      x: 0,
+      autoAlpha: 1,
+      stagger: 0.2,
+    }, '-=1')
+
   // fetch json bestand "Projects"
   const [projects, setProjects] = useState([]);
 

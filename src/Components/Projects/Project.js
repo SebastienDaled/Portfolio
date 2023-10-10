@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { gsap } from 'gsap/gsap-core';
 
 import '../../Styles/main.css';
 
 const Project = ({ key, index }) => {
 
-  const [project, setProject] = useState();
+  const [project, setProject] = useState(null);
   const [BackgroundImg, setBackgroundImg] = useState();
 
   useEffect(() => {
@@ -23,30 +23,32 @@ const Project = ({ key, index }) => {
   // console.log(project);
 
   useEffect(() => {
-    const hoverTimeLineOver = gsap.timeline({ paused: true }).to('.project__titel', {
-      duration: 1,
-      opacity: 0,
-      delay: 1
-    });
-
-    const hoverTimeLineLeave = gsap.timeline({ paused: true }).to('.project__titel', {
-      duration: 1,
-      opacity: 1,
-      delay: 1
-    });
-
-    // Use requestAnimationFrame to ensure the DOM is ready
-    requestAnimationFrame(() => {
+    if (project === null) {
+      return;
+    } else {
+      const hoverTimeLineOver = gsap.timeline({ paused: true }).to('.project__titel', {
+        duration: 1,
+        opacity: 0,
+        delay: 1
+      });
+  
+      const hoverTimeLineLeave = gsap.timeline({ paused: true }).to('.project__titel', {
+        duration: 1,
+        opacity: 1,
+        delay: 1
+      });
+  
       const projectTitle = document.querySelector('.project__titel');
       if (projectTitle) {
         projectTitle.addEventListener('mouseover', () => {
+          console.log("jksdhfj dhfkxdh flkjdhx kfjhdxkfjhdj");
           hoverTimeLineOver.play();
         });
         projectTitle.addEventListener('mouseleave', () => {
           hoverTimeLineLeave.play();
         });
       }
-    });
+    }
   }, []);
 
 
