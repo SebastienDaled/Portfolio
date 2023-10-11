@@ -57,10 +57,10 @@ p {
 .head {
   display: flex;
   justify-content: space-between;
-  margin-top: 17rem;
+  margin-top: 40vh;
 }
 .head__name{
-  width: 60rem;
+  width: 70rem;
   border-left: 3px solid #C9C9C9;
   padding: 10rem 0 5rem 2rem;
   align-self: center;
@@ -73,16 +73,17 @@ p {
   color: #535353;
 }
 .head__picture{
-  width: 40rem;
+  width: 40%;
   align-self: flex-start;
-  margin-top: -10rem;
+  margin-top: -16rem;
+  /* min-width: 500px; */
 }
 
 .intro p{
   max-width: 800px;
   min-width: 350px;
   margin-left: 2rem;
-  margin-bottom: 10rem;
+  /* margin-bottom: 10rem; */
 }
 
 /* -----------------------------------------------------------------projecten opmaak */
@@ -106,10 +107,16 @@ p {
   margin-top: 2rem;
   overflow: hidden;
   position: relative;
+  z-index: 0;
 }
 .projecten__project{
   background-position: center center;
   position: relative;
+  transition: .7s;
+}
+.projecten__project:hover{
+  cursor: pointer;
+  transform: scale(1.02);
 }
 
 .project__vak{
@@ -118,6 +125,7 @@ p {
   left: 1rem;
   font-size: 2rem;
   font-weight: 300;
+  color: #C9C9C9;
 }
 .project__titel {
   position: absolute;
@@ -125,6 +133,7 @@ p {
   left: 0r;
   padding: 2rem 1rem;
   background-color: #20202088;
+  color: #C9C9C9;
   width: 100%;
   font-family: 'forma-djr-display', sans-serif;
   font-weight: 500;
@@ -141,6 +150,7 @@ p {
   height: 100%;
   top: 0;
   left: 0;
+  z-index: 1;
 }
 .btn_action{
   background-color: #202020;
@@ -171,9 +181,8 @@ p {
 }
 .previousBtn{
   position: absolute;
-  z-index: 100;
   left: 0;
-
+  top: 0;
   background: rgb(21,21,21);
   background: -moz-linear-gradient(90deg, rgba(21,21,21,1) 0%, rgba(48,48,48,0) 100%);
   background: -webkit-linear-gradient(90deg, rgba(21,21,21,1) 0%, rgba(48,48,48,0) 100%);
@@ -182,9 +191,8 @@ p {
 }
 .nextBtn{
   position: absolute;
-  z-index: 110;
   right: 0;
-
+  top: 0;
   background: rgb(21,21,21);
   background: -moz-linear-gradient(-90deg, rgba(21,21,21,1) 0%, rgba(48,48,48,0) 100%);
   background: -webkit-linear-gradient(-90deg, rgba(21,21,21,1) 0%, rgba(48,48,48,0) 100%);

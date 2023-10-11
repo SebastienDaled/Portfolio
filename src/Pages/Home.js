@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import '../Styles/main.css';
 import Project from '../Components/Projects/Project';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   gsap.registerPlugin(ScrollTrigger);
@@ -42,8 +43,8 @@ const Home = () => {
       const pictureTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: 'body',
-          start: '-=250',
-          end: '+=1000',
+          start: '-=580',
+          end: '+=800',
           scrub: true,
           // markers: true,
         }
@@ -52,7 +53,7 @@ const Home = () => {
         scrollTrigger: {
           trigger: '.intro p',
           start: '-=1000',
-          end: '-=400',
+          end: '-=500',
           scrub: true,
           // markers: true,
         }
@@ -71,21 +72,21 @@ const Home = () => {
       pictureTimeline
         .to('.head__picture img', { 
           duration: 1, 
-          y: -200, 
-          autoAlpha: 0
+          y: -600, 
+          autoAlpha: 1
         })
 
       introTimeline
         .to('.intro p', { 
           duration: 1, 
-          y: 270, 
+          y: "32vh", 
           autoAlpha: 1
         })
 
       titleTimeline
         .to('.head__name', { 
           duration: 1, 
-          y: 400, 
+          y: "40vh", 
           autoAlpha: 1
         })
 
@@ -161,7 +162,7 @@ const Home = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    fetch('projects.json')
+    fetch('Projects.json')
       .then(response => response.json())
       .then(data => setProjects(data.projecten));
   }
@@ -229,7 +230,7 @@ const Home = () => {
             <p className='head__name_function'>Webdeveloper/WebDesigner</p>
           </div>
           <div className='head__picture'>
-            <img src="/images/foto.jpg" alt="Foto van Sebastien" />
+            <img src="images/foto.jpg" alt="Foto van Sebastien" />
           </div>
         </section>
         <section className='intro'>
@@ -248,29 +249,37 @@ Naast mijn passie voor webontwikkeling heb ik nog een andere liefde, en dat is v
               <div className='projectDiv'>
               
 
-                {projects.map((_, i) => {
-                  return <Project key={i} index={i} />
+                {projects.map((test, i) => {
+                  return <Project index={i} projectObj={test} />
                 })}
 
                 
               </div>
-              
             </div>
-            <div className='projects__buttons'>
-              <button onClick={previousProject} className='btn_action previousBtn'><svg
-    id="Layer_4"
-    data-name="Layer 4"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 82.61 146.43"
-    style={{ fill: 'none', stroke: '#C9C9C9', strokeLinecap: 'round', strokeMiterlimit: 10, strokeWidth: '10px' }}
-  >
-    <polyline points="74.8 140.43 8.49 74.12 76.61 6"/>
-  </svg></button>
+
+              <button onClick={previousProject} className='btn_action previousBtn'>
+                <svg
+                  id="Layer_4"
+                  data-name="Layer 4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 82.61 146.43"
+                  style={{ fill: 'none', stroke: '#C9C9C9', strokeLinecap: 'round', strokeMiterlimit: 10, strokeWidth: '10px' }}
+                >
+                <polyline points="74.8 140.43 8.49 74.12 76.61 6"/>
+                </svg>
+              </button>
               <button onClick={nextProject} className='btn_action nextBtn'>
-<svg id="Layer_4" data-name="Layer 4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82.61 146.43" style={{fill: 'none', stroke: '#C9C9C9', strokeLinecap: 'round', strokeMiterlimit: 10, strokeWidth: '10px' }}>
-  <polyline class="cls-1" points="7.81 6 74.12 72.31 6 140.43"/>
-</svg></button>
-            </div>
+                <svg 
+                  id="Layer_4" 
+                  data-name="Layer 4" 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  viewBox="0 0 82.61 146.43" 
+                  style={{fill: 'none', stroke: '#C9C9C9', strokeLinecap: 'round', strokeMiterlimit: 10, strokeWidth: '10px' }}
+                >
+                <polyline class="cls-1" points="7.81 6 74.12 72.31 6 140.43"/>
+                </svg>
+              </button>
+
           </div>
         </section>
 
@@ -323,25 +332,25 @@ Naast mijn passie voor webontwikkeling heb ik nog een andere liefde, en dat is v
           <div className='footer__socials'>
             <a href="https://www.linkedin.com/in/sebastien-daled-rosseel-5b3261223/" target="_blank" rel="noreferrer">
               <div>
-                <img src="/images/footer/linkedin.png" alt="linkedin logo" />
+                <img src="./images/footer/linkedin.png" alt="linkedin logo" />
                 <p>Sebastien Daled-Rosseel</p>
               </div>
             </a>
             <a href="https://www.instagram.com/sebastien_dr/" target="_blank" rel="noreferrer">
               <div>
-                <img src="/images/footer/instagram.png" alt="Instagram logo" />
+                <img src="images/footer/instagram.png" alt="Instagram logo" />
                 <p>sebastien_dr</p>
               </div>
             </a>
             <a href="https://www.facebook.com/sebastien.daledrosseel.7" target="_blank" rel="noreferrer">
               <div>
-                <img src="/images/footer/facebook.png" alt="Facebook logo" />
+                <img src="images/footer/facebook.png" alt="Facebook logo" />
                 <p>Sébastien Daled-Rosseel</p>
               </div>
             </a>
           </div>
         </div>
-        <p className='copyrights'>© copyright 2023 Sebastien Daled-Rosseel</p>
+        <p className='copyrights'>© copyright 2023 Sebastien Daled-Rosseel v0.0.3</p>
       </footer>
     </div>
   );

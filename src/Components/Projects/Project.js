@@ -2,28 +2,14 @@ import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { gsap } from 'gsap/gsap-core';
 
 import '../../Styles/main.css';
+import { Link } from 'react-router-dom';
 
-const Project = ({ key, index }) => {
+const Project = ({ projectObj, index }) => {
 
-  const [project, setProject] = useState(null);
-  const [BackgroundImg, setBackgroundImg] = useState();
-
-  useEffect(() => {
-    fetch('/projects.json')
-      .then(res => res.json())
-      .then(data => {
-        setProject(data.projecten[index])
-        setBackgroundImg(data.projecten[index].mainPicture)
-      });
-    
-   
-    }
-  , []);
-  
-  // console.log(project);
+ 
 
   useEffect(() => {
-    if (project === null) {
+    if (projectObj === null) {
       return;
     } else {
       const hoverTimeLineOver = gsap.timeline({ paused: true }).to('.project__titel', {
@@ -54,30 +40,31 @@ const Project = ({ key, index }) => {
 
 
   const divStyle = {
-    backgroundImage: `url(${BackgroundImg})`,
+    backgroundImage: `url(${projectObj.mainPicture})`,
     width: '100%',
     height: '400px',
-    backgroundSize: 'cover'
+    backgroundSize: 'cover',
+    zIndex: '0'
   }; 
   
 
-
-
-  if (!BackgroundImg) {
+  if (!projectObj.mainPicture) {
     // Wacht totdat de achtergrondafbeeldings-URL is opgehaald
     return null;
   }
 
   return (
-    <div style={divStyle} className='projecten__project'>
+    <Link to={`/projectDetail/${projectObj.id}`} style={divStyle} className='projecten__project' key={projectObj.id}>
       <div>
         
-        <h4 className='project__vak'>{project.vak}</h4>
+        <h4 className='project__vak'>{projectObj.vak}</h4>
         <div className='project__titel'>
-          <p>{project.titel}</p>
+          <p>{projectObj.titel}</p>
         </div>
       </div>
-    </div>
+
+     
+    </Link>
   );
 };
 
