@@ -5,7 +5,7 @@
       "titel": "Development quiz",
       "vak": "Mobile Development | Javascript",
       "beschrijving": "Bij deze opdracht was het doel om een interactieve quiz over development te maken. De vragen werden opgehaald via een API en getoond aan de gebruikers. Er waren drie instellingen: categoriekeuze, het aantal vragen en de moeilijkheidsgraad. Na het afronden van de quiz werden de resultaten weergegeven, inclusief de score en welke vragen juist of fout waren beantwoord. Daarnaast was er een optie om eerdere scores te bekijken. Dit maakte de quiz educatief en stimuleerde gebruikers om hun kennis te verbeteren.",
-      "mainPicture": "images/projecten/project1/main.jpg",
+      "mainPicture": "images/projecten/project1/main.png",
       "pictures": ["images/projecten/project1/1.png", "images/projecten/project1/2.png", "images/projecten/project1/3.png"]
     },
     {
