@@ -1,0 +1,13 @@
+.tag {
+  padding: .5rem 1rem;
+  background-color: #343434;
+  border-radius: 2rem;
+  margin-top: 1rem;
+}
+.tag p{
+  margin: 0;
+  font-size: .8rem;
+}
+.tag + .tag {
+  margin-left: 0.5rem;
+}

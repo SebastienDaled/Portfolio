@@ -27,7 +27,7 @@ const Project = ({ projectObj, index }) => {
       const projectTitle = document.querySelector('.project__titel');
       if (projectTitle) {
         projectTitle.addEventListener('mouseover', () => {
-          console.log("jksdhfj dhfkxdh flkjdhx kfjhdxkfjhdj");
+          // console.log("jksdhfj dhfkxdh flkjdhx kfjhdxkfjhdj");
           hoverTimeLineOver.play();
         });
         projectTitle.addEventListener('mouseleave', () => {
@@ -56,10 +56,10 @@ const Project = ({ projectObj, index }) => {
   return (
     <Link to={`/projectDetail/${projectObj.id}`} style={divStyle} className='projecten__project' key={projectObj.id}>
       <div>
-        
-        <h4 className='project__vak'>{projectObj.vak}</h4>
+        {/* <p>{projectObj.id}</p> */}
+        <h4 className='project__vak'>{projectObj.titel}</h4>
         <div className='project__titel'>
-          <p>{projectObj.titel}</p>
+          <p>{projectObj.vak}</p>
         </div>
       </div>
 

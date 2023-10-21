@@ -1,52 +1,60 @@
 {
   "projecten": [
     {
-      "id": 1,
+      "id": 0,
       "titel": "Development quiz",
-      "vak": "Mobile Development",
-      "beschrijving": "Een quiz over development",
+      "vak": "Mobile Development | Javascript",
+      "beschrijving": "Bij deze opdracht was het doel om een interactieve quiz over development te maken. De vragen werden opgehaald via een API en getoond aan de gebruikers. Er waren drie instellingen: categoriekeuze, het aantal vragen en de moeilijkheidsgraad. Na het afronden van de quiz werden de resultaten weergegeven, inclusief de score en welke vragen juist of fout waren beantwoord. Daarnaast was er een optie om eerdere scores te bekijken. Dit maakte de quiz educatief en stimuleerde gebruikers om hun kennis te verbeteren.",
       "mainPicture": "images/projecten/project1/main.jpg",
-      "pictures": ["images/projecten/project1/1.jpg", "images/projecten/project1/2.jpg", "images/projecten/project1/3.jpg"]
+      "pictures": ["images/projecten/project1/1.jpg", "images/projecten/project1/2.jpg", "images/projecten/project1/3.jpg", "images/projecten/project1/4.jpg"],
+      "tags": ["Javascript", "API", "HTML", "CSS"]
+    },
+    {
+      "id": 1,
+      "titel": "Yet Another Chat",
+      "vak": "Mobile Development | Javascript",
+      "beschrijving": "Voor deze boeiende opdracht kregen we de kans om een chat-applicatie te ontwikkelen. Onze focus lag op het gebruik van Firebase, een krachtig platform voor authenticatie en gegevensopslag, om een naadloze gebruikerservaring te bieden bij het versturen, ontvangen en opslaan van berichten en chats. Gebruikers kregen de mogelijkheid om chats aan te maken en indien nodig te verwijderen, waardoor ze volledige controle hadden over hun communicatie. Om de gebruikers te helpen snel de juiste chat te vinden in een groeiende lijst van conversaties, hebben we een intuïtieve zoekbalk geïntegreerd. Met deze zoekfunctionaliteit konden gebruikers eenvoudig de gewenste chat of gesprekspartner identificeren en snel weer in contact komen. Dit project bood ons de kans om zowel de technische aspecten van Firebase als de gebruikerservaring centraal te stellen, en we waren enthousiast om een app te creëren die niet alleen functioneel was, maar ook aansloot bij de behoeften en verwachtingen van de eindgebruikers. Het resultaat was een chat-applicatie die zowel krachtig als gebruiksvriendelijk was, en die de communicatie tussen gebruikers aanzienlijk verbeterde.",
+      "mainPicture": "images/projecten/project2/main.jpg",
+      "pictures": ["images/projecten/project2/1.jpg", "images/projecten/project2/2.jpg", "images/projecten/project2/3.jpg", "images/projecten/project2/4.jpg"],
+      "tags": ["Javascript", "Firebase", "HTML", "CSS"]
     },
     {
       "id": 2,
-      "titel": "Development quiz",
-      "vak": "Mobile Development",
-      "beschrijving": "Een quiz over development",
-      "mainPicture": "images/projecten/project1/main.jpg",
-      "pictures": ["images/projecten/project1/1.jpg", "images/projecten/project1/2.jpg", "images/projecten/project1/3.jpg"]
+      "titel": "Parkieten Tool",
+      "vak": "Webdevelopment | PHP / Laravel",
+      "beschrijving": "Voor deze uitdagende opdracht stond ons een boeiende taak te wachten: het ontwikkelen van een geavanceerde tool voor een klant. Deze tool moest een uitgebreide functionaliteit bieden voor het beheer van leden en clubs die zich toeleggen op het fokken en verzorgen van parkieten. Ons doel was om een gebruiksvriendelijke en veelzijdige website te creëren waar leden hun jaarlijkse lidmaatschapsgeld konden betalen, evenals de benodigde ringen voor het markeren van hun gevleugelde vrienden konden bestellen. Daarnaast wilden we de klant voorzien van een krachtig dashboard, waarmee hij eenvoudig alle aspecten van zijn parkietenvereniging kon beheren. Dit dashboard zou de klant in staat stellen om efficiënt alle lidmaatschapszaken, financiën en ringbestellingen te beheren. Het was onze missie om een naadloze en geïntegreerde oplossing te bieden, zodat de klant zich volledig kon concentreren op het welzijn van de parkieten en het succes van zijn club.",
+      "mainPicture": "images/projecten/project3/main.jpg",
+      "pictures": ["images/projecten/project3/1.jpg", "images/projecten/project3/2.png", "images/projecten/project3/3.png", "images/projecten/project3/4.jpg", "images/projecten/project3/5.jpg", "images/projecten/project3/6.png", "images/projecten/project3/7.png", "images/projecten/project3/8.jpg"],
+      "tags": ["PHP", "Laravel", "Blade", "CSS"]
     },
     {
       "id": 3,
-      "titel": "Development quiz",
-      "vak": "Mobile Development",
-      "beschrijving": "Een quiz over development",
+      "titel": "GDMDEV Site",
+      "vak": "3D for Web | Gsap, Scss",
+      "beschrijving": "Voor deze opdracht moesten we een bestaande website nauwkeurig repliceren, inclusief diverse animaties. We maakten gebruik van GSAP (GreenSock Animation Platform) met functies zoals ScrollTrigger en scrub om de scroll-geactiveerde animaties na te bootsen. Het was een uitdaging die onze webdesign- en animatievaardigheden op de proef stelde en resulteerde in een indrukwekkende website die het origineel evenaarde.",
       "mainPicture": "images/projecten/project1/main.jpg",
-      "pictures": ["images/projecten/project1/1.jpg", "images/projecten/project1/2.jpg", "images/projecten/project1/3.jpg"]
+      "pictures": ["images/projecten/project1/1.jpg", "images/projecten/project1/2.jpg", "images/projecten/project1/3.jpg"],
+      "tags": ["Javascript", "GSAP", "HTML", "SCSS", "Javascript"]
     },
     {
       "id": 4,
-      "titel": "Development quiz",
-      "vak": "Mobile Development",
-      "beschrijving": "Een quiz over development",
+      "titel": "Immo Site",
+      "vak": "Mobile Development II | React",
+      "beschrijving": "Als eindopdracht moest er een immo-website gemaakt worden. Met behulp van React, bouwen we een responsieve en interactieve website. Dit stelt gebruikers in staat om eenvoudig hiuzen/appartement goed te doorzoeken, makelaars te contacteren en real-time gegevens te bekijken voor een moderne en aantrekkelijke website.",
       "mainPicture": "images/projecten/project1/main.jpg",
-      "pictures": ["images/projecten/project1/1.jpg", "images/projecten/project1/2.jpg", "images/projecten/project1/3.jpg"]
+      "pictures": ["images/projecten/project1/1.jpg", "images/projecten/project1/2.jpg", "images/projecten/project1/3.jpg"],
+      "tags": ["React", "Javascript", "Mongo DB"]
     },
     {
       "id": 5,
-      "titel": "Development quiz",
-      "vak": "Mobile Development",
-      "beschrijving": "Een quiz over development",
+      "titel": "Project Plant",
+      "vak": "IOT | Python",
+      "beschrijving": "Voor ons eindproject werkten we in een groep van vier aan een IoT-project: een geautomatiseerd irrigatiesysteem dat de grondvochtigheid meet en water geeft. We gebruikten een Raspberry Pi, een vochtsensor, Python en een magneetklep. We creëerden ook een dashboard waarmee gebruikers de vochtigheid op afstand konden volgen en het irrigatiesysteem konden bedienen.",
       "mainPicture": "images/projecten/project1/main.jpg",
-      "pictures": ["images/projecten/project1/1.jpg", "images/projecten/project1/2.jpg", "images/projecten/project1/3.jpg"]
-    },
-    {
-      "id": 6,
-      "titel": "Development quiz",
-      "vak": "Mobile Development",
-      "beschrijving": "Een quiz over development",
-      "mainPicture": "images/projecten/project1/main.jpg",
-      "pictures": ["images/projecten/project1/1.jpg", "images/projecten/project1/2.jpg", "images/projecten/project1/3.jpg"]
+      "pictures": ["images/projecten/project1/1.jpg", "images/projecten/project1/2.jpg", "images/projecten/project1/3.jpg"],
+      "tags": ["Python", "Raspberry Pi", "Flask", "Wiring", "Groepswerk"],
+      "names": ["Victor Tanaka, Emiel Deboyser, Bram Van Doren & Sebastien Daled-Rosseel"]
+
     }
   ]
 }

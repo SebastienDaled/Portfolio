@@ -4,19 +4,22 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import '../Styles/main.css';
 import Project from '../Components/Projects/Project';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import Footer from '../Components/Footer/footer';
 
 const Home = () => {
-  gsap.registerPlugin(ScrollTrigger);
+  
+  
+  gsap.registerPlugin(ScrollTrigger);  
 
   const headTimeline = gsap.timeline();
-  // const introTimeline = gsap.timeline();
+  const introTimeline = gsap.timeline();
   
 
   useEffect(() => {
     const headH1 = document.querySelector('.head__name h1');
     const headFunction = document.querySelector('.head__name_function');
-    // const headPicture = document.querySelector('.head__picture img');
+    const headPicture = document.querySelector('.head__picture img');
 
     gsap.set(headH1, { y: 100, autoAlpha: 0 });
     gsap.set(headFunction, { y: 100, autoAlpha: 0 });
@@ -67,7 +70,8 @@ const Home = () => {
           // markers: true,  
         }
       });
-
+      
+      gsap.set('.intro p', { y: 500 });
   
       pictureTimeline
         .to('.head__picture img', { 
@@ -79,7 +83,7 @@ const Home = () => {
       introTimeline
         .to('.intro p', { 
           duration: 1, 
-          y: "32vh", 
+          y: 0, 
           autoAlpha: 1
         })
 
@@ -116,47 +120,7 @@ const Home = () => {
 
 
   }, );
-  const footerTimeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.footer__socials',
-      start: '200 bottom',
-      end: 'bottom',
-      scrub: true,
-      // markers: true,
-    }
-  });
-
-  gsap.set('.footer__socials a', { x: 200, autoAlpha: 0 });
-  gsap.set('.footer__info div', { x: 100, autoAlpha: 0 });
-
-  footerTimeline
-    .to('.footer__info', { 
-      duration: 1, 
-      y: -100, 
-      autoAlpha: 1
-    })
-    .to('.footer__socials', { 
-      duration: 1, 
-      y: -100, 
-      autoAlpha: 1
-    }, '-=1')
-    .to('.copyrights', {
-      duration: 1,
-      y: -100,
-      autoAlpha: 1,
-    }, '-=1')
-    .to('.footer__info div', {
-      duration: 5,
-      x: 0,
-      autoAlpha: 1,
-      stagger: 0.2,
-    }, '-=1')
-    .to('.footer__socials a', {
-      duration: 5,
-      x: 0,
-      autoAlpha: 1,
-      stagger: 0.2,
-    }, '-=1')
+  
 
   // fetch json bestand "Projects"
   const [projects, setProjects] = useState([]);
@@ -164,42 +128,71 @@ const Home = () => {
   useEffect(() => {
     fetch('Projects.json')
       .then(response => response.json())
-      .then(data => setProjects(data.projecten));
+      .then(data => setProjects(data.projecten))
+      .catch(error => console.log(error));
   }
   , []);
 
   const [xvalue, setXvalue] = useState(0);
   const maxProject = projects.length;
   const procentJump = 100 / maxProject;
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const nextProject = () => {
-    if (xvalue < maxProject - 2) {
+    if (xvalue < maxProject - 2 && !isAnimating) {
+      setIsAnimating(true);
       const projectDiv = document.querySelector('.projectDiv');
-      gsap.to(projectDiv, { 
-        duration: 1, 
-        x: "-="+procentJump+"%", 
-        
-      })
-    } else {
-      return;
+      gsap.to(projectDiv, {
+        duration: 1,
+        x: "-=" + procentJump + "%",
+        onComplete: () => {
+          setIsAnimating(false);
+          setXvalue(xvalue + 1);
+        }
+      });
     }
-    setXvalue(xvalue + 1);
-  }
+    const dots = document.querySelectorAll('.dots');
+
+    dots.forEach((dot, index) => {
+      if (index === xvalue + 1) {
+        dots[0].classList.remove('dots_active');
+        dot.classList.add('dots_active');
+      } else {
+        dot.classList.remove('dots_active');
+      }
+    });
+  };
 
   const previousProject = () => {
-    if (xvalue > 0) {
+    if (xvalue > 0 && !isAnimating) {
+      setIsAnimating(true);
       const projectDiv = document.querySelector('.projectDiv');
-      gsap.to(projectDiv, { 
-        duration: 1, 
-        x: "+="+procentJump+"%", 
-        
-      })
-    } else {
-      return;
-      
+      gsap.to(projectDiv, {
+        duration: 1,
+        x: "+=" + procentJump + "%",
+        onComplete: () => {
+          setIsAnimating(false);
+          setXvalue(xvalue - 1);
+        }
+      });
     }
-    setXvalue(xvalue - 1);
-  }
+    const dots = document.querySelectorAll('.dots');
+
+    dots.forEach((dot, index) => {
+      if (index === xvalue) {
+        dots[0].classList.remove('dots_active');
+        dot.classList.add('dots_active');
+      } else {
+        dot.classList.remove('dots_active');
+      }
+    });
+  };
+  
+
+  // make the right dot active when the project changes
+  useEffect(() => {
+    
+  }, [xvalue]);
 
   useEffect(() => {
     if (xvalue === 0) {
@@ -218,8 +211,9 @@ const Home = () => {
       const nextBtn = document.querySelector('.nextBtn');
       nextBtn.style.display = 'block';
     }
-  }
-  , [xvalue, maxProject]);
+  }, [xvalue, maxProject]);
+
+  
 
   return (
     <div>
@@ -228,17 +222,21 @@ const Home = () => {
           <div className='head__name'>
             <h1>Sebastien <br /> Daled-Rosseel</h1>
             <p className='head__name_function'>Webdeveloper/WebDesigner</p>
+            <div className='intro'> 
+            <p>Hallo, ik ben Sebastien Daled-Rosseel, een enthousiaste student aan Artevelde Hogeschool, waar ik de opleiding New Media Development volg. Momenteel zit ik in mijn derde en laatste jaar van deze boeiende studie. Mijn interesse in de wereld van multimedia en webontwikkeling begon eigenlijk al in het middelbaar, waar ik de opleiding Multimedia volgde aan Viso Mariakerke. Tijdens deze periode leerde ik voornamelijk de kunst van het ontwerpen, en dit vormde een solide basis voor mijn verdere academische reis. <br /><br />
+
+Wat mij echt drijft en inspireert, is het coderen en ontwerpen van websites. Het is fascinerend om te zien hoe je met programmeertalen en creatieve ontwerpelementen iets kunt creëren dat toegankelijk is voor een wereldwijd publiek. Het proces van het bedenken van een concept, het schrijven van de code, en uiteindelijk het zien van een goed ontworpen website tot leven komen, geeft me enorm veel voldoening.<br /><br />
+
+Naast mijn passie voor webontwikkeling heb ik nog een andere liefde, en dat is voetbal. Als hobby breng ik graag mijn vrije tijd door op het voetbalveld. Het is niet alleen een geweldige manier om fit te blijven, maar het biedt ook de kans om samen te werken in een team, strategieën te bedenken en je vaardigheden op het veld te verbeteren. Voetbal brengt mensen samen en leert belangrijke levenslessen over teamwork en doorzettingsvermogen.</p>
+
+            </div>
           </div>
           <div className='head__picture'>
             <img src="images/foto.jpg" alt="Foto van Sebastien" />
           </div>
         </section>
         <section className='intro'>
-          <p>Hallo, ik ben Sebastien Daled-Rosseel, een enthousiaste student aan Artevelde Hogeschool, waar ik de opleiding New Media Development volg. Momenteel zit ik in mijn derde en laatste jaar van deze boeiende studie. Mijn interesse in de wereld van multimedia en webontwikkeling begon eigenlijk al in het middelbaar, waar ik de opleiding Multimedia volgde aan Viso Mariakerke. Tijdens deze periode leerde ik voornamelijk de kunst van het ontwerpen, en dit vormde een solide basis voor mijn verdere academische reis. <br /><br />
-
-Wat mij echt drijft en inspireert, is het coderen en ontwerpen van websites. Het is fascinerend om te zien hoe je met programmeertalen en creatieve ontwerpelementen iets kunt creëren dat toegankelijk is voor een wereldwijd publiek. Het proces van het bedenken van een concept, het schrijven van de code, en uiteindelijk het zien van een goed ontworpen website tot leven komen, geeft me enorm veel voldoening.<br /><br />
-
-Naast mijn passie voor webontwikkeling heb ik nog een andere liefde, en dat is voetbal. Als hobby breng ik graag mijn vrije tijd door op het voetbalveld. Het is niet alleen een geweldige manier om fit te blijven, maar het biedt ook de kans om samen te werken in een team, strategieën te bedenken en je vaardigheden op het veld te verbeteren. Voetbal brengt mensen samen en leert belangrijke levenslessen over teamwork en doorzettingsvermogen.</p>
+          
         </section>
         <section className='projecten'>
           <h2>Projecten</h2>
@@ -252,7 +250,7 @@ Naast mijn passie voor webontwikkeling heb ik nog een andere liefde, en dat is v
                 {projects.map((test, i) => {
                   return <Project index={i} projectObj={test} />
                 })}
-
+                
                 
               </div>
             </div>
@@ -279,7 +277,14 @@ Naast mijn passie voor webontwikkeling heb ik nog een andere liefde, en dat is v
                 <polyline class="cls-1" points="7.81 6 74.12 72.31 6 140.43"/>
                 </svg>
               </button>
-
+          </div>
+          <div className='dots_nav'>
+            {Array(5).fill(0).map((test, i) => {
+              return <div className={`dots ${i === 0 ? 'dots_active' : ''}`}></div>
+            })}
+          {/* {projects.map((test, i) => {
+                 return <div className={`dots ${i === 0 ? 'dots_active' : ''}`}></div>
+            })} */}
           </div>
         </section>
 
@@ -321,37 +326,7 @@ Naast mijn passie voor webontwikkeling heb ik nog een andere liefde, en dat is v
         </section>
       </main>
 
-      <footer>
-        <div className='footer'>
-          <div className='footer__info'>
-            <div>
-              <p>seba.daled@telenet.be</p>
-              <p>0472 72 04 63</p>
-            </div>
-          </div>
-          <div className='footer__socials'>
-            <a href="https://www.linkedin.com/in/sebastien-daled-rosseel-5b3261223/" target="_blank" rel="noreferrer">
-              <div>
-                <img src="./images/footer/linkedin.png" alt="linkedin logo" />
-                <p>Sebastien Daled-Rosseel</p>
-              </div>
-            </a>
-            <a href="https://www.instagram.com/sebastien_dr/" target="_blank" rel="noreferrer">
-              <div>
-                <img src="images/footer/instagram.png" alt="Instagram logo" />
-                <p>sebastien_dr</p>
-              </div>
-            </a>
-            <a href="https://www.facebook.com/sebastien.daledrosseel.7" target="_blank" rel="noreferrer">
-              <div>
-                <img src="images/footer/facebook.png" alt="Facebook logo" />
-                <p>Sébastien Daled-Rosseel</p>
-              </div>
-            </a>
-          </div>
-        </div>
-        <p className='copyrights'>© copyright 2023 Sebastien Daled-Rosseel v0.0.3</p>
-      </footer>
+      <Footer />
     </div>
   );
 };
