@@ -55,7 +55,7 @@ const Project = ({ projectObj, index }) => {
 
   return (
     <Link to={`/projectDetail/${projectObj.id}`} style={divStyle} className='projecten__project' key={projectObj.id}>
-      <div>
+      <div className={projectObj.inProgress ? "progress" : null}>
         {/* <p>{projectObj.id}</p> */}
         <h4 className='project__vak'>{projectObj.titel}</h4>
         <div className='project__titel'>

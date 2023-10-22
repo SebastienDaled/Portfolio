@@ -78,10 +78,25 @@ const ProjectDetail = () => {
           </div>
         </div>
         <div className='detail__images'>
-          {project.pictures.map((foto, index) => (
-            <img src={foto} alt="project foto" key={index} />
-          ))
-          }
+          {project.pictures.map((foto, index) => {
+            const fileExtension = foto.split('.').pop().toLowerCase(); // Extract the file extension and convert to lowercase
+
+            if (fileExtension === 'mp4') {
+              // Render a video for .mov files
+              return (
+                <video key={index} controls={false} loop autoPlay>
+                  <source src={foto} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              );
+            } else if (fileExtension === 'jpg' || fileExtension === 'png') {
+              // Render an image for .jpg or .png files
+              return <img key={index} src={foto} alt={`Image ${index}`} />;
+            } else {
+              // Handle other file types or render a default message
+              return <p key={index}>Unsupported file type</p>;
+            }
+          })}
         </div>
       </div>
 

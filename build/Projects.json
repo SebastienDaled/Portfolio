@@ -32,8 +32,9 @@
       "titel": "GDMDEV Site",
       "vak": "3D for Web | Gsap, Scss",
       "beschrijving": "Voor deze opdracht moesten we een bestaande website nauwkeurig repliceren, inclusief diverse animaties. We maakten gebruik van GSAP (GreenSock Animation Platform) met functies zoals ScrollTrigger en scrub om de scroll-geactiveerde animaties na te bootsen. Het was een uitdaging die onze webdesign- en animatievaardigheden op de proef stelde en resulteerde in een indrukwekkende website die het origineel evenaarde.",
-      "mainPicture": "images/projecten/project1/main.jpg",
-      "pictures": ["images/projecten/project1/1.jpg", "images/projecten/project1/2.jpg", "images/projecten/project1/3.jpg"],
+      "mainPicture": "images/projecten/project4/main.jpg",
+      "pictures": ["images/projecten/project4/1.png", "images/projecten/project4/1.mp4",  "images/projecten/project4/2.mp4", "images/projecten/project4/2.png", "images/projecten/project4/3.png",  "images/projecten/project4/3.mp4", "images/projecten/project4/4.mp4", "images/projecten/project4/4.png", "images/projecten/project4/5.png", "images/projecten/project4/5.mp4"],
+      "videos": [],
       "tags": ["Javascript", "GSAP", "HTML", "SCSS", "Javascript"]
     },
     {
@@ -41,20 +42,21 @@
       "titel": "Immo Site",
       "vak": "Mobile Development II | React",
       "beschrijving": "Als eindopdracht moest er een immo-website gemaakt worden. Met behulp van React, bouwen we een responsieve en interactieve website. Dit stelt gebruikers in staat om eenvoudig hiuzen/appartement goed te doorzoeken, makelaars te contacteren en real-time gegevens te bekijken voor een moderne en aantrekkelijke website.",
-      "mainPicture": "images/projecten/project1/main.jpg",
-      "pictures": ["images/projecten/project1/1.jpg", "images/projecten/project1/2.jpg", "images/projecten/project1/3.jpg"],
-      "tags": ["React", "Javascript", "Mongo DB"]
+      "mainPicture": "images/projecten/project5/main.jpg",
+      "pictures": [],
+      "tags": ["React", "Javascript", "Mongo DB"],
+      "inProgress": true
     },
     {
       "id": 5,
       "titel": "Project Plant",
       "vak": "IOT | Python",
       "beschrijving": "Voor ons eindproject werkten we in een groep van vier aan een IoT-project: een geautomatiseerd irrigatiesysteem dat de grondvochtigheid meet en water geeft. We gebruikten een Raspberry Pi, een vochtsensor, Python en een magneetklep. We creëerden ook een dashboard waarmee gebruikers de vochtigheid op afstand konden volgen en het irrigatiesysteem konden bedienen.",
-      "mainPicture": "images/projecten/project1/main.jpg",
-      "pictures": ["images/projecten/project1/1.jpg", "images/projecten/project1/2.jpg", "images/projecten/project1/3.jpg"],
+      "mainPicture": "images/projecten/project6/main.jpg",
+      "pictures": [],
       "tags": ["Python", "Raspberry Pi", "Flask", "Wiring", "Groepswerk"],
-      "names": ["Victor Tanaka, Emiel Deboyser, Bram Van Doren & Sebastien Daled-Rosseel"]
-
+      "names": ["Victor Tanaka, Emiel Deboyser, Bram Van Doren & Sebastien Daled-Rosseel"],
+      "inProgress": true
     }
   ]
 }

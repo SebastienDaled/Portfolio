@@ -115,6 +115,7 @@ p {
   background-position: center center;
   position: relative;
   transition: .7s;
+  cursor: pointer;
 }
 .projecten__project:hover{
   cursor: pointer;
@@ -318,7 +319,7 @@ textarea{
 .detail h1 {
 }
 .detail h2{
-  margin-top: -1.5rem;
+  margin-top: -1rem;
   font-weight: 400;
   font-style: italic;
   font-size: 2rem;
@@ -334,6 +335,7 @@ textarea{
 .detail__images{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
   align-items: center;
   margin-top: 5rem;
   margin-bottom: 20rem;
@@ -351,4 +353,25 @@ textarea{
 span{
   font-size: .8rem;
   font-style: italic;
+  margin-bottom: 1rem;
+}
+video{
+  width: 100%;
+}
+
+.progress {
+  /* standaard cursor */
+  cursor: auto;
+}
+.progress::after{
+  content: 'In progress';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #aaaaaa;
+  font-size: 2rem;
+  font-weight: 800;
+  background-color: #141414d6;
+  padding: 2rem 4rem;
 }
